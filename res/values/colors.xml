@@ -1,1 +1,12 @@
-
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_base">#11111B</color>
+    <color name="bg_mantle">#181825</color>
+    <color name="bg_surface">#1E1E2E</color>
+    <color name="text">#CDD6F4</color>
+    <color name="subtext">#6C7086</color>
+    <color name="blue">#89B4FA</color>
+    <color name="green">#A6E3A1</color>
+    <color name="red">#F38BA8</color>
+    <color name="mauve">#CBA6F7</color>
+</resources>

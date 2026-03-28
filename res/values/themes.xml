@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BlockBlastSolver" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">#89B4FA</item>
+        <item name="colorPrimaryDark">#1E1E2E</item>
+        <item name="colorAccent">#CBA6F7</item>
+        <item name="android:windowBackground">#11111B</item>
+        <item name="android:statusBarColor">#11111B</item>
+    </style>
+</resources>
