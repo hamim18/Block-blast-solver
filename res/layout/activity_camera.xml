@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- 1. Preview kamera -->
+    <TextureView
+        android:id="@+id/textureView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- 2. Overlay panduan (saat preview) -->
+    <com.blockblast.solver.OverlayView
+        android:id="@+id/overlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- 3. Foto hasil capture (fullscreen, untuk tap 2 sudut) -->
+    <ImageView
+        android:id="@+id/ivCaptured"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:background="#000000"
+        android:visibility="gone"/>
+
+    <!-- 4. Overlay tap sudut (di atas foto) -->
+    <com.blockblast.solver.CropOverlay
+        android:id="@+id/cropOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <!-- 5. Panel konfirmasi hasil deteksi -->
+    <LinearLayout
+        android:id="@+id/confirmPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#E6111124"
+        android:padding="16dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hasil Deteksi Grid"
+            android:textColor="#CDD6F4"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tap sel untuk koreksi manual jika ada yang salah"
+            android:textColor="#6C7086"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:paddingBottom="12dp"/>
+
+        <com.blockblast.solver.GridView
+            android:id="@+id/previewGrid"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="🔄 Ulangi Scan"
+                android:textSize="13sp"
+                android:backgroundTint="#45475A"
+                android:textColor="#CDD6F4"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="✓ Konfirmasi"
+                android:textSize="13sp"
+                android:backgroundTint="#A6E3A1"
+                android:textColor="#11111B"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 6. Status teks -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="96dp"
+        android:text="Memuat kamera…"
+        android:textColor="#CDD6F4"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:background="#99000000"
+        android:padding="8dp"/>
+
+    <!-- 7. Tombol Scan -->
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="180dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:text="📷  Scan Grid"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#89B4FA"
+        android:textColor="#11111B"/>
+
+</FrameLayout>

@@ -1,1 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  item_piece.xml — satu tile piece di grid selector.
+  Tambahan: tvPieceBadge (angka urut pilihan 1/2/3) di pojok kanan atas.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@drawable/item_bg">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <com.blockblast.solver.PieceView
+            android:id="@+id/pieceView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+
+        <TextView
+            android:id="@+id/tvPieceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#CDD6F4"
+            android:textSize="11sp"
+            android:paddingTop="4dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <!-- Badge nomor urut (muncul saat terpilih) -->
+    <TextView
+        android:id="@+id/tvPieceBadge"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="4dp"
+        android:background="#89B4FA"
+        android:textColor="#11111B"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+</FrameLayout>
