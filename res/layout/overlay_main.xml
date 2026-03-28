@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC111124">
+
+    <!-- PANEL 1: Main -->
+    <LinearLayout
+        android:id="@+id/mainPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="4dp">
+
+            <TextView
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="⚡ Block Blast Solver"
+                android:textSize="14sp" android:textStyle="bold"
+                android:textColor="#CDD6F4"/>
+
+            <TextView
+                android:id="@+id/tvSolveStatus"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Solving…" android:textColor="#FAB387"
+                android:textSize="11sp" android:paddingEnd="8dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnEditGrid"
+                android:layout_width="wrap_content" android:layout_height="28dp"
+                android:text="⊞ Edit"
+                android:textSize="10sp"
+                android:backgroundTint="#313244" android:textColor="#A6E3A1"
+                android:layout_marginEnd="4dp"
+                android:paddingStart="8dp" android:paddingEnd="8dp"/>
+
+            <ImageButton
+                android:id="@+id/btnMinimize"
+                android:layout_width="32dp" android:layout_height="32dp"
+                android:src="@android:drawable/arrow_up_float"
+                android:background="#45475A" android:tint="#CDD6F4"
+                android:contentDescription="Minimize"/>
+        </LinearLayout>
+
+        <!-- Spacer yang ukurannya sama dengan gridView absolut -->
+        <View
+            android:id="@+id/gridSpacer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gambar 3 piece di bawah:"
+            android:textColor="#6C7086"
+            android:textSize="10sp"
+            android:paddingBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="match_parent"
+                android:layout_weight="1" android:orientation="vertical"
+                android:gravity="center_horizontal" android:layout_marginEnd="4dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Piece 1" android:textColor="#89B4FA"
+                    android:textSize="9sp" android:paddingBottom="2dp"/>
+                <com.blockblast.solver.MiniGridView
+                    android:id="@+id/mini1"
+                    android:layout_width="match_parent" android:layout_height="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="match_parent"
+                android:layout_weight="1" android:orientation="vertical"
+                android:gravity="center_horizontal" android:layout_marginEnd="4dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Piece 2" android:textColor="#A6E3A1"
+                    android:textSize="9sp" android:paddingBottom="2dp"/>
+                <com.blockblast.solver.MiniGridView
+                    android:id="@+id/mini2"
+                    android:layout_width="match_parent" android:layout_height="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="match_parent"
+                android:layout_weight="1" android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Piece 3" android:textColor="#FAB387"
+                    android:textSize="9sp" android:paddingBottom="2dp"/>
+                <com.blockblast.solver.MiniGridView
+                    android:id="@+id/mini3"
+                    android:layout_width="match_parent" android:layout_height="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button android:id="@+id/btnClearGrid"
+                android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1"
+                android:text="Clear Grid" android:textSize="10sp" android:textStyle="bold"
+                android:backgroundTint="#313244" android:textColor="#F38BA8"
+                android:layout_marginEnd="4dp"/>
+            <Button android:id="@+id/btnClearPieces"
+                android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1"
+                android:text="Clear Piece" android:textSize="10sp" android:textStyle="bold"
+                android:backgroundTint="#313244" android:textColor="#FAB387"
+                android:layout_marginEnd="4dp"/>
+            <Button android:id="@+id/btnSolve"
+                android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1.2"
+                android:text="▶ Solve" android:textSize="11sp" android:textStyle="bold"
+                android:backgroundTint="#89B4FA" android:textColor="#11111B"
+                android:enabled="false"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- PANEL 2: Solution -->
+    <LinearLayout
+        android:id="@+id/solvePanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#EE111124"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="6dp">
+            <ImageButton
+                android:id="@+id/btnBackFromSolve"
+                android:layout_width="36dp" android:layout_height="36dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="@android:color/transparent"
+                android:tint="#CDD6F4" android:contentDescription="Kembali"
+                android:layout_marginEnd="8dp"/>
+            <TextView android:id="@+id/tvSolveTitle"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Solusi" android:textColor="#CDD6F4"
+                android:textSize="14sp" android:textStyle="bold"/>
+            <ImageButton
+                android:id="@+id/btnMinimize2"
+                android:layout_width="32dp" android:layout_height="32dp"
+                android:src="@android:drawable/arrow_up_float"
+                android:background="#45475A" android:tint="#CDD6F4"
+                android:contentDescription="Minimize"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="4dp">
+            <TextView android:id="@+id/tvStep"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Step 0/0" android:textColor="#CDD6F4" android:textSize="12sp"/>
+            <TextView android:id="@+id/tvScore"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Lines: 0" android:textColor="#A6E3A1" android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- Spacer yang ukurannya sama dengan solutionGrid absolut -->
+        <View
+            android:id="@+id/solutionSpacer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button android:id="@+id/btnRestart"
+                android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1"
+                android:text="⟳" android:textSize="16sp"
+                android:backgroundTint="#45475A" android:textColor="#CDD6F4"
+                android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnPlayPause"
+                android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1"
+                android:text="▶" android:textSize="16sp"
+                android:backgroundTint="#89B4FA" android:textColor="#11111B"
+                android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnNext"
+                android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1"
+                android:text="▶|" android:textSize="14sp"
+                android:backgroundTint="#45475A" android:textColor="#CDD6F4"
+                android:layout_marginEnd="3dp"/>
+            <Button android:id="@+id/btnNextRound"
+                android:layout_width="0dp" android:layout_height="42dp" android:layout_weight="1.2"
+                android:text="Ronde ▶" android:textSize="10sp" android:textStyle="bold"
+                android:backgroundTint="#A6E3A1" android:textColor="#11111B"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- gridView — di root FrameLayout, diposisikan absolut -->
+    <com.blockblast.solver.GridView
+        android:id="@+id/gridView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="top|start"/>
+
+    <!-- solutionGrid — di root FrameLayout, posisi sama dengan gridView -->
+    <com.blockblast.solver.GridView
+        android:id="@+id/solutionGrid"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="top|start"
+        android:visibility="gone"/>
+
+    <!-- PANEL 3: Edit Grid Position -->
+    <FrameLayout
+        android:id="@+id/editGridPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#44000000"
+        android:visibility="gone">
+
+        <com.blockblast.solver.GridEditOverlay
+            android:id="@+id/gridEditOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:background="#CC111124"
+            android:padding="10dp">
+            <Button
+                android:id="@+id/btnResetGridPos"
+                android:layout_width="0dp" android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="↺ Reset" android:textSize="12sp"
+                android:backgroundTint="#45475A" android:textColor="#CDD6F4"
+                android:layout_marginEnd="8dp"/>
+            <Button
+                android:id="@+id/btnSaveGridPos"
+                android:layout_width="0dp" android:layout_height="44dp"
+                android:layout_weight="2"
+                android:text="✓ Simpan Posisi"
+                android:textSize="13sp" android:textStyle="bold"
+                android:backgroundTint="#A6E3A1" android:textColor="#11111B"/>
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

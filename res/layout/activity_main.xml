@@ -1,1 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#11111B"
+    android:padding="32dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="⚡"
+        android:textSize="64sp"
+        android:gravity="center"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Block Blast Solver"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#CDD6F4"
+        android:gravity="center"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvOverlayInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tekan Aktifkan untuk membuka overlay\ndi atas game Block Blast"
+        android:textSize="13sp"
+        android:textColor="#6C7086"
+        android:gravity="center"
+        android:paddingBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnStartOverlay"
+        android:layout_width="240dp"
+        android:layout_height="52dp"
+        android:text="⚡ Aktifkan Overlay"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:backgroundTint="#89B4FA"
+        android:textColor="#11111B"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnStopOverlay"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:text="✕ Matikan Overlay"
+        android:textSize="14sp"
+        android:backgroundTint="#45475A"
+        android:textColor="#F38BA8"/>
+
+</LinearLayout>
