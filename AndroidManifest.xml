@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.blockblast.solver">
 
-    <!-- Izin kamera untuk fitur scan grid -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera2" android:required="true" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
 
     <application
         android:allowBackup="true"
@@ -22,21 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".PieceSelectorActivity"
+        <service
+            android:name=".FloatingWindowService"
             android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".SolutionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Activity baru: scan grid via kamera -->
-        <activity
-            android:name=".CameraActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:foregroundServiceType="dataSync"/>
 
     </application>
 </manifest>
